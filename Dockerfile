@@ -17,8 +17,10 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/*
 
 COPY conf/frps.ini /var/frp/conf/frps.ini
+COPY conf/frpc.ini /var/frp/conf/frpc.ini
 
 VOLUME /var/frp/conf
 
 WORKDIR /var/frp
 ENTRYPOINT ./frps -c ./conf/frps.ini
+ENTRYPOINT ./frpc -c ./conf/frpc.ini
