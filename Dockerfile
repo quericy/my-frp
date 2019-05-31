@@ -22,5 +22,4 @@ COPY conf/frpc.ini /var/frp/conf/frpc.ini
 VOLUME /var/frp/conf
 
 WORKDIR /var/frp
-ENTRYPOINT ./frps -c ./conf/frps.ini
-ENTRYPOINT ./frpc -c ./conf/frpc.ini
+CMD nohup sh -c '/var/frp/frps -c /var/frp/conf/frps.ini && /var/frp/frpc -c /var/frp/conf/frpc.ini'
