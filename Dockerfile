@@ -1,7 +1,7 @@
 FROM ubuntu
 MAINTAINER quericy <quericy@live.com>
 
-ARG FRP_VERSION=0.27.0
+ARG FRP_VERSION=0.24.1
 
 RUN apt update \
     && apt install -y wget
