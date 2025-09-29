@@ -1,7 +1,7 @@
 FROM busybox:stable
 MAINTAINER quericy <quericy@live.com>
 
-ARG FRP_VERSION=0.44.0
+ARG FRP_VERSION=0.65.0
 
 
 WORKDIR /tmp
@@ -11,10 +11,10 @@ RUN set -x \
     && mv frp_${FRP_VERSION}_linux_amd64 /var/frp \
     && mkdir -p /var/frp/conf \
 
-COPY conf/frps.ini /var/frp/conf/frps.ini
-COPY conf/frpc.ini /var/frp/conf/frpc.ini
+COPY conf/frps.toml /var/frp/conf/frps.toml
+COPY conf/frpc.toml /var/frp/conf/frpc.toml
 
 VOLUME /var/frp/conf
 
 WORKDIR /var/frp
-CMD sh -c 'nohup /var/frp/frpc -c /var/frp/conf/frpc.ini 2>1 &' && nohup sh -c '/var/frp/frps -c /var/frp/conf/frps.ini'
+CMD sh -c 'nohup /var/frp/frpc -c /var/frp/conf/frpc.toml 2>1 &' && nohup sh -c '/var/frp/frps -c /var/frp/conf/frps.toml'
